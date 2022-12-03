@@ -39,19 +39,19 @@ if __name__ == "__main__":
 
     print("Processing ...\n")
     img.show()
-    img.save("output_"+choix_img)
-    print("Nom de l'image : output_"+choix_img+"\n")
+    img.save("output/output_"+str(taille_finale)+"pixels_"+choix_img)
+    print("Nom de l'image : output_"+str(taille_finale)+"pixels_"+choix_img+"\n")
 
 else:
-    def Pixelisation(nom_fichier, taille_multiple_3, enregistrer = False):
-        """Pixelisation(nom_fichier, taille_multiple_3) est une fonction qui prend en paramètre un nom de fichier avec son extension, une taille avec laquelle l'image sera pixelisée (max 150) et un boléen si on veut l'enregistrer.
+    def Pixelisation(nom_fichier, taille_multiple_3, uniforme_taille = 300, enregistrer = False):
+        """Pixelisation(nom_fichier, taille_multiple_3) est une fonction qui prend en paramètre un nom de fichier avec son extension, une taille avec laquelle l'image sera pixelisée (max uniforme_taille/2),
+        une taille uniforme_taille qui sera la taille de l'image output (doit être une puissance de 3, 300 reccomandé) et un boléen si on veut l'enregistrer.
         La taille doit être un multiple de trois pour le jeux. La fonction retourne l'image modifié qui peut être enregistrée et une liste de chaque moyenne."""
         
         img = Image.open(nom_fichier)
 
         l_moyenne = []
 
-        uniforme_taille = 300
         uniforme_taille_divise = int(uniforme_taille/taille_multiple_3)
 
         img = img.resize((uniforme_taille, uniforme_taille), Image.ANTIALIAS)
@@ -83,6 +83,6 @@ else:
                         pixels[i,j] = moyenne
 
         if enregistrer == True:
-            img.save("output_"+nom_fichier)
+            img.save("output/output_"+str(taille_multiple_3)+"pixels_"+nom_fichier)
             
         return img, l_moyenne
