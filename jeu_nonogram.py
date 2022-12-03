@@ -1,8 +1,11 @@
-from img_converter_uniforme_output import Pixelisation
-from img_converter_black_white import Conversion_noir_blanc
+from img_converter_uniforme_output import Pixelisation, Conversion_noir_blanc, Grille_blanche
 
-nom_fichier = "test3.png"
+nom_fichier = "test2.png"
+taille_image = 300
+pixels = 21
 
-img, moy = Pixelisation(nom_fichier, 9, 300, True)
+img, moy = Pixelisation(pixels, taille_image, True, nom_fichier)
 
-Conversion_noir_blanc(img, moy, 9, 300, True, nom_fichier)
+img = Conversion_noir_blanc(img, moy, pixels, taille_image, True, nom_fichier)
+
+Grille_blanche(moy, pixels, taille_image, True, nom_fichier)
